@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>项目介绍 - 交通灯检测</title>
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/paragraph.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  <!-- Font Awesome CSS 链接 -->
+    <link rel="stylesheet" type="text/css" href="css/arrow.css">
+    <link rel="stylesheet" type="text/css" href="css/container.css">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
+    <style>
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #nextButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 2;
+        }
+        .container {
+            height: 70vh;
+            width: 70vw;
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
+        .container div {
+            display: inline-block;
+            width: 70%;
+            margin: 10px;
+            vertical-align: top;
+        }
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            transition: opacity 2s;
+            opacity: 0;
+        }
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">标签转换过程</h1>
+    <div class="container">
+        <!-- <h1 id="title">标签转换过程</h1> -->
+        <div class="section" id="section1">
+            <h2>Ultralytics官方文档</h2>
+            <p>在ultralytics官方文档中，有着客制化数据集训练的教程。</p>
+            <iframe src="https://docs.ultralytics.com/yolov5/tutorials/train_custom_data/?h=custom" width="800" height="600"></iframe>
+        </div>
+        <br>
+        <br>
+        <br>
+ 
+        <div class="section" id="section2">
+            <h2>Labelme数据标注问题</h2>
+            <p>教程中显示，yolo格式的标签为*.txt。使用labelme进行数据标注最大的问题是labelme的格式是需要转换才能被yolo模型所使用。因此，我们花费一定精力找寻可以转化的办法。</p>
+        </div>
+
+        <div class="section" id="section3">
+            <h2>分析json格式的标签文件</h2>
+            <img src="pic/json.png" alt="json文件示例图片"> <!-- 替换为你的图片文件路径 -->
+        </div>
+
+        <div class="section" id="section4">
+            <h2>Labelme2YOLO项目</h2><br>
+            <p>幸运的是，我们在GitHub上找到了一个名为 Labelme2YOLO 的开源项目。</p>
+            <img src="pic/labelme2YOLO.png" alt="GitHub页面示例图片"> <!-- 替换为你的图片文件路径 -->
+            <p>https://github.com/rooneysh/Labelme2YOLO</p>
+            <p>此脚本仅需一条命令，便可将json格式的数据标签，转化为YOLO格式的数据文件夹，并生成对应的yaml文件。</p>
+        </div>
+    </div>    
+    
+    <span id="nextButton"><i class="fas fa-arrow-right"></i></span>
+    <script src="js/textAnimation.js"></script>
+    <script>
+        document.getElementById('nextButton').onclick = function() {
+            location.href = '06.html';  // 替换为你的下一个页面的URL
+        };    
+
+        var container = document.querySelector('.container');
+        var sections = Array.from(container.getElementsByClassName('section'));
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                var container = entry.target.closest('.container');
+                if (entry.isIntersecting) {
+                    container.style.zIndex = '100';
+                    entry.target.style.opacity = '1';
+                } else {
+                    container.style.zIndex = '0';
+                    entry.target.style.opacity = '0';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        window.onload = function() {
+            var title = document.getElementById('title');
+            var button = document.getElementById('nextButton');
+            var button = document.getElementById('nextButton');
+            var textElements = document.querySelectorAll('h1, h2, p');
+
+            container.style.transition = 'opacity 2s';
+            container.style.opacity = '1';
+
+            title.style.transition = 'transform 2s';
+            title.style.transform = 'translateY(0)';
+
+            button.style.transition = 'transform 2s';
+            button.style.transform = 'translateY(0)';
+
+        };
+    </script>
+</body>
+</html>

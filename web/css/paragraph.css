@@ -1,0 +1,11 @@
+p, ul {
+    display: inline-block;
+    font-size: 1.5em;
+    margin-left: 20px;
+    font-family: "STXinwei", Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    letter-spacing: 2px;
+    vertical-align: top;  /* 对齐到顶部 */
+    color: #193758;
+}
+

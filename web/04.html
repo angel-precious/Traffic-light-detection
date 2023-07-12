@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>项目介绍 - 交通灯检测</title>
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/paragraph.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  <!-- Font Awesome CSS 链接 -->
+    <link rel="stylesheet" type="text/css" href="css/arrow.css">
+    <link rel="stylesheet" type="text/css" href="css/container.css">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
+    <style>
+        h1, h2, p {
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .container {
+            height: 80vh; /* Modify to suit your needs */
+            overflow-y: scroll;
+            scrollbar-width: none; /* Firefox */
+        }
+        .container div {
+            display: inline-block;
+            width: 70%;
+            margin: 10px;
+            vertical-align: top;
+        }
+        .container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+        .section {
+            opacity: 0;
+            transition: opacity 2s;
+            min-height: 100vh; /* Make each section fill at least the viewport */
+        }
+        .section * {
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">项目标签及结果</h1>
+
+        <div class="section" id="section1">
+            <h2>初步标签选择</h2><br>
+            <p>通过观察数据，我们首先选择使用red、green、yellow、blank这四类标签分别代表红灯、绿灯、黄灯、空白</p>
+            <img src="pic/first_label.png" alt="初步标签选择的示例图片"> <!-- 替换 "placeholder_1.jpg" 为你的图片文件路径 -->
+        </div>
+        
+        <div class="section" id="section2">
+            <h2>blank数据影响分析</h2><br>
+            <p>后来，经过实际研究发现，blank数据非常影响训练效果</p>
+            <img src="pic/blank2.png" alt="blank数据影响的示例图片"> <!-- 替换 "placeholder_2.jpg" 为你的图片文件路径 -->
+        </div>
+
+        <div class="section" id="section3">
+            <h2>标签修改</h2><br>
+            <p>因此，我们选择将标签修改为不止颜色，同时指示是哪个行进方向的指示灯</p>
+            <img src="pic/direct_label.png" alt="标签修改后的示例图片"> <!-- 替换 "placeholder_3.jpg" 为你的图片文件路径 -->
+        </div>
+
+        <div class="section" id="section4">
+            <h2>最终结果</h2><br>
+            <p>最后，我们训练结果如图所示</p>
+            <img src="pic/final.png" alt="最终结果的示例图片"> <!-- 替换 "placeholder_4.jpg" 为你的图片文件路径 -->
+        </div>
+
+    </div>    
+    
+    <span id="nextButton"><i class="fas fa-arrow-right"></i></span>
+    <script src="js/textAnimation.js"></script>
+    <script>
+        document.getElementById('nextButton').onclick = function() {
+            location.href = '05.html';  // 替换为你的下一个页面的URL
+        };
+
+        var container = document.querySelector('.container');
+        var sections = Array.from(container.getElementsByClassName('section'));
+
+        var container = document.querySelector('.container');
+        var sections = Array.from(container.getElementsByClassName('section'));
+
+        container.onscroll = function() {
+            sections.forEach(function(section, index) {
+                var rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight / 2 && rect.bottom > 0) {
+                    section.style.opacity = '1';
+                    Array.from(section.children).forEach(function(child) {
+                        child.style.opacity = '1';
+                    });
+                } else if (rect.bottom > window.innerHeight / 2 && rect.top < 0) {
+                    section.style.opacity = '1';
+                    Array.from(section.children).forEach(function(child) {
+                        child.style.opacity = '1';
+                    });
+                } else {
+                    section.style.opacity = '0';
+                    Array.from(section.children).forEach(function(child) {
+                        child.style.opacity = '0';
+                    });
+                }
+            });
+        };
+
+        window.onload = function() {
+            var container = document.querySelector('.container');
+            var title = document.getElementById('title');
+            var button = document.getElementById('nextButton');
+            var textElements = document.querySelectorAll('h1, h2, p');
+
+            container.style.transition = 'opacity 2s';
+            container.style.opacity = '1';
+
+            title.style.transition = 'transform 2s';
+            title.style.transform = 'translateY(0)';
+
+            button.style.transition = 'transform 2s';
+            button.style.transform = 'translateY(0)';
+
+            for (var i = 0; i < textElements.length; i++) {
+                setTimeout((function(element) {
+                    return function() {
+                        element.style.opacity = '1';
+                    };
+                })(textElements[i]), i * 200); // Change delay as needed
+            }
+            // Make the first section visible
+            var firstSection = document.getElementById('section1');
+            firstSection.style.opacity = '1';
+            Array.from(firstSection.children).forEach(function(child) {
+                child.style.opacity = '1';
+            });
+        };
+        
+    </script>
+</body>
+</html>

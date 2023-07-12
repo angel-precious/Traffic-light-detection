@@ -1,0 +1,28 @@
+h1 {
+    margin:0px;
+    padding:0px;
+    font-family:"STXinwei";
+    font-size: 3em !important;
+    font-weight: bold;  
+    transform: translateY(-100px);
+    background-image: linear-gradient(to bottom, #ec428c, #32d1d3);
+    color: #ffffff; 
+    background-clip: text;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
+h2 {
+    font-family:"STCaiyun";
+    display: inline-block;
+    font-size: 2.25em;  /* 调整为更大的字体 */
+    font-weight: bold;  /* 加粗 */
+    color: #f0f0f0;  /* 更亮的颜色 */
+    vertical-align: top;  /* 对齐到顶部 */
+    background-image: linear-gradient(to bottom, #ec428c, #32d1d3); 
+    color: #ffffff; 
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: #32d1d3;
+    -webkit-text-fill-color:transparent;    
+}

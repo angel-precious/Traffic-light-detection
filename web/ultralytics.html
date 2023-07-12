@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>项目效果展示</title>
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/paragraph.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Font Awesome CSS 链接 -->
+    <link rel="stylesheet" type="text/css" href="css/arrow.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/container.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
+    <link rel="stylesheet" type="text/css" href="css/video.css">
+    <style>
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            opacity: 0;
+            padding: 20px;
+            transition: opacity 2s;
+        }
+
+        .container.visible {
+            opacity: 1;
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: #ff6600;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .icon.visible {
+            opacity: 1;
+        }
+
+        #logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 2s, transform 2s;
+            transform: translateY(-50%);
+        }
+
+        #logo-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body onclick="showLogoAndIntroduction()">
+    <div class="container">
+        <h1 id="title">YOLOv8 - 先进的物体检测模型</h1>
+        <p>Ultralytics
+            YOLOv8是一款先进的(SOTA)模型，它在之前YOLO版本成功的基础上引入了新的功能和改进，进一步提高了性能和灵活性。YOLOv8设计快速、准确、易于使用，是各种物体检测和跟踪、实例分割、图像分类和姿态估计任务的绝佳选择。
+        </p>
+        <div id="logo-container">
+            <svg data-v-26fbcf67="" fill="none" viewBox="0 0 44 38" height="38" width="44"
+                xmlns="http://www.w3.org/2000/svg" alt="Ultralytics Logo" class="branding">
+                <g xmlns="http://www.w3.org/2000/svg" clip-path="url(#clip0_1_2)">
+                    <path
+                        d="M23.2784 10.4283L23.2762 15.7426C23.2983 22.995 17.4505 28.9104 10.3037 28.898C7.46479 28.892 4.88029 28.0167 2.78521 26.4867C6.54583 33.3213 13.7538 37.9396 21.9462 37.9489C33.848 37.9449 43.6806 28.1487 43.8615 16.1006L43.859 16.0504C43.8697 15.7728 43.8561 10.6356 43.8694 10.4082C43.851 4.69198 39.2285 -0.00810672 33.5769 0.00377983C27.8991 -0.00818398 23.2575 4.66181 23.2784 10.4283Z"
+                        fill="url(#paint0_linear_1_2)"></path>
+                    <path
+                        d="M10.2894 5.34795C4.61576 5.34795 -4.77649e-06 10.0171 -4.77649e-06 15.7561C-4.77649e-06 21.4947 4.61576 26.1638 10.2894 26.1638C15.9632 26.1638 20.5791 21.4947 20.5791 15.7561C20.5791 10.0171 15.9632 5.34795 10.2894 5.34795Z"
+                        fill="#0B23A9"></path>
+                </g>
+                <defs xmlns="http://www.w3.org/2000/svg">
+                    <linearGradient id="paint0_linear_1_2" x1="12.4224" y1="37.5859" x2="36.2714" y2="11.4686"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#09DBF0"></stop>
+                        <stop offset="1" stop-color="#0B23A9"></stop>
+                    </linearGradient>
+                    <clipPath id="clip0_1_2">
+                        <rect width="88" height="76" fill="white"></rect>
+                    </clipPath>
+                </defs>
+            </svg>
+            <p>Ultralytics是一家专注于视觉AI的公司，它提供了一系列的工具和服务，让用户可以轻松地创建和部署高性能的AI模型。Ultralytics最著名的产品是YOLOv8，这是一个实时的目标检测和图像分割模型，它基于深度学习和计算机视觉的最新进展，提供了无与伦比的速度和准确性。Ultralytics还有一个移动应用，让用户可以在手机上预览、导出和下载他们在Ultralytics HUB上创建的ML模型，并且实时运行。</p>
+        </div>
+    </div>
+    <span id="nextButton"><i class="fas fa-arrow-right"></i></span>
+    <script>
+        function showLogoAndIntroduction() {
+            var iconContainer = document.querySelector('logo-container');
+            var logoContainer = document.getElementById('logo-container');
+
+            iconContainer.style.display = 'none';
+            logoContainer.classList.add('visible');
+        }
+
+        document.getElementById('nextButton').onclick = function () {
+            location.href = '03.html';  // 替换为你的下一个页面的URL
+        };
+
+        window.onload = function () {
+            var container = document.querySelector('.container');
+            var title = document.getElementById('title');
+            var button = document.getElementById('nextButton');
+
+            container.style.transition = 'opacity 2s';
+            container.style.opacity = '1';
+
+            title.style.transition = 'transform 2s';
+            title.style.transform = 'translateY(0)';
+
+            button.style.transition = 'transform 2s';
+            button.style.transform = 'translateY(0)';
+        };
+    </script>
+</body>
+
+</html>

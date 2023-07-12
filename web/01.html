@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>项目介绍 - 交通灯检测</title>
+    <link rel="stylesheet" type="text/css" href="css/paragraph.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  <!-- Font Awesome CSS 链接 -->
+    <link rel="stylesheet" type="text/css" href="css/arrow.css">
+    <link rel="stylesheet" type="text/css" href="css/container.css">
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">项目背景与意义</h1>
+        <div>
+            <h2>项目背景</h2><br>
+            <p>
+                随着汽车技术的不断发展，辅助驾驶技术已经成为汽车行业的一个重要发展方向。这种技术通过自动化的方式，协助驾驶员更好地控制汽车。
+            </p>
+            <p>
+                利用最新的YOLOv8实时目标检测技术，我们希望能开发一个能自动识别交通灯状态的辅助驾驶系统，以提高道路交通的安全性。
+            </p>
+        </div>
+        <div>
+            <h2>项目意义</h2><br>
+            <ul>
+                <li><strong>提高道路安全性：</strong>通过实时监测和识别交通灯的状态，辅助驾驶系统可以帮助驾驶员更准确地理解交通情况。</li><br>
+                <!-- <li><strong>减轻驾驶员负担：</strong>利用YOLOv8识别交通灯的状态，可以减轻驾驶员的工作压力，使他们更加专注于驾驶。</li><br> -->
+                <li><strong>提高驾驶体验：</strong>对驾驶员进行实时的、准确的交通灯状态提示，可以减少驾驶员的焦虑感和疲劳感，提高驾驶体验。</li><br>
+                <!-- <li><strong>推动技术创新：</strong>该项目将促进YOLOv8和其他深度学习技术在汽车行业的应用，有助于推动汽车行业的技术创新。</li><br> -->
+            </ul>
+        </div>
+        <div>
+            <p>
+                通过YOLOv8实现交通灯的识别对于辅助驾驶来说是一个重要的步骤，它不仅能提高道路交通的安全性，提高驾驶体验，也有助于推动深度学习技术在实际问题中的应用，具有很高的实用价值。
+            </p>
+        </div>
+    </div>
+    <span id="nextButton"><i class="fas fa-arrow-right"></i></span>
+    <script>
+        document.getElementById('nextButton').onclick = function() {
+            location.href = '02.html';  // 替换为你的下一个页面的URL
+        };
+        window.onload = function() {
+            var container = document.querySelector('.container');
+            var title = document.getElementById('title');
+            var button = document.getElementById('nextButton');
+
+            container.style.transition = 'opacity 2s';
+            container.style.opacity = '1';
+
+            title.style.transition = 'transform 2s';
+            title.style.transform = 'translateY(0)';
+
+            button.style.transition = 'transform 2s';
+            button.style.transform = 'translateY(0)';
+        };
+    </script>
+    <script src="js/animation.js"></script>
+</body>
+</html>
+

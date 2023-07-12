@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "onnxruntime-node": "^1.15.1",
+    "onnxruntime-web": "^1.15.1"
+  }
+}

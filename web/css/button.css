@@ -1,0 +1,20 @@
+#nextButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    width:auto; margin-top:12px; 
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:11px; 
+    color:#FFFFFF;
+    line-height:25px;
+    letter-spacing:1px;
+    background-color: #0081ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    transform: translateY(100px);
+}
+
+#nextButton:hover {
+    background-color: #40807a;
+}

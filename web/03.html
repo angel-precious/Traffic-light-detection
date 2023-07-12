@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>项目介绍 - 交通灯检测</title>
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/paragraph.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  <!-- Font Awesome CSS 链接 -->
+    <link rel="stylesheet" type="text/css" href="css/arrow.css">
+    <link rel="stylesheet" type="text/css" href="css/container.css">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
+    <style>
+        h1, h2, p {
+            opacity: 0;
+            transition: opacity 2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">项目实施过程</h1>
+        <div class="section">
+            <h2>1. 获取数据集</h2>
+            <p>我们的数据集由实训项目提供，一共3053张。</p>
+            <h2>2. 数据标注工具</h2>
+            <p>labelme：https://github.com/wkentaro/labelme</p>
+            <p>labelimg：https://github.com/heartexlabs/labelImg</p>
+            <p>同时，我们还使用了labelme2yolo项目所提供的转换工具</p>
+            <p>https://github.com/rooneysh/Labelme2YOLO</p>
+        </div>
+        <div class="section">
+            <h2>3. 数据标注</h2>
+            <p>我们将数据标注，使用lableimg与labelme项目。整个数据集中的红绿灯既有基于新国标提示方向的信号灯，还有只提示颜色的旧信号，因此，我们选择将标签共分为以下几类：</p>
+            <p>左转——红灯/绿灯/黄灯</p>
+            <p>直行——红灯/绿灯/黄灯</p>
+            <p>右转——红灯/绿灯/黄灯</p>
+            <p>红灯/绿灯/黄灯</p>
+            <p>人行道——红灯/绿灯/blank</p>
+            <p>blank</p>
+            <p>共16种标签。我们将数据集分为train与val，比例为8:2。</p>
+        </div>
+        <div>
+            <h2>4. 我们选择采用yolov8n来进行模型训练</h2>
+            <p>最终在视频流的cpu帧率可达40～50ms。</p>
+        </div>
+    </div>    
+    
+    <span id="nextButton"><i class="fas fa-arrow-right"></i></span>
+    <script src="js/textAnimation.js"></script>
+    <script>
+        document.getElementById('nextButton').onclick = function() {
+            location.href = '04.html';  // 替换为你的下一个页面的URL
+        };
+        window.onload = function() {
+            var container = document.querySelector('.container');
+            var title = document.getElementById('title');
+            var button = document.getElementById('nextButton');
+            var textElements = document.querySelectorAll('h1, h2, p');
+
+            container.style.transition = 'opacity 2s';
+            container.style.opacity = '1';
+
+            title.style.transition = 'transform 2s';
+            title.style.transform = 'translateY(0)';
+
+            button.style.transition = 'transform 2s';
+            button.style.transform = 'translateY(0)';
+
+            for (var i = 0; i < textElements.length; i++) {
+                setTimeout((function(element) {
+                    return function() {
+                        element.style.opacity = '1';
+                    };
+                })(textElements[i]), i * 200); // Change delay as needed
+            }
+        };
+    </script>
+</body>
+</html>

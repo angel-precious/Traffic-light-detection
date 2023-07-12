@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>交通灯检测</title>
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/paragraph.css">
+    <link rel="stylesheet" type="text/css" href="css/button.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  <!-- Font Awesome CSS 链接 -->
+    <link rel="stylesheet" type="text/css" href="css/container.css">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
+    <style>
+        #nextButton {
+            margin-bottom: 20px;
+            background-color: #4CAF50;  /* 按钮的背景色 */
+            color: white;  /* 按钮的字体颜色 */
+            padding: 15px 32px;  /* 按钮的内边距 */
+            text-align: center;  /* 文字居中 */
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: all 0.5s;  /* 过渡效果 */
+            cursor: pointer;
+            border-radius: 12px;  /* 按钮的形状 */
+        }
+
+        #nextButton:hover {
+            background-color: #45a049;  /* 按钮的悬停颜色 */
+        }
+
+        #nextButton:active {
+            background-color: #3e8e41;  /* 按钮的点击颜色 */
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);  /* 按钮的点击效果 */
+        }
+
+        /* 添加闪烁动画 */
+        @keyframes blink {
+            0% {opacity: 0;}
+            50% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        
+        #title {
+            animation: blink 2s linear infinite;  /* 应用闪烁动画 */
+        }
+
+        /* 添加渐入动画 */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">交通灯检测</h1>
+        <p id="text1">利用最新的YOLOv8实时目标检测技术</p>
+        <p id="text2">我们希望能开发一个能自动识别交通灯状态的辅助驾驶系统，以提高道路交通的安全性。</p>
+        <br>
+        <button id="nextButton">开始探索</button>
+    </div>
+
+    <script>
+        document.getElementById('nextButton').onclick = function() {
+            location.href = '01.html';  // 替换为你的下一个页面的URL
+        };
+    
+        window.onload = function() {
+            var container = document.querySelector('.container');
+            var title = document.getElementById('title');
+            var text1 = document.getElementById('text1');
+            var text2 = document.getElementById('text2');
+            var button = document.getElementById('nextButton');
+    
+            container.style.transition = 'opacity 2s';
+            container.style.opacity = '1';
+    
+            title.style.transition = 'transform 2s';
+            title.style.transform = 'translateY(0)';
+    
+            button.style.transition = 'transform 2s';
+            button.style.transform = 'translateY(0)';
+    
+            // 将 text1 的每个字都包裹在一个 span 标签中
+            text1.innerHTML = text1.textContent.split('').map(function(c, i) {
+                return '<span style="animation-delay:' + i * 0.1 + 's" class="fade-in">' + c + '</span>';
+            }).join('');
+    
+            // 将 text2 的每个字都包裹在一个 span 标签中
+            text2.innerHTML = text2.textContent.split('').map(function(c, i) {
+                return '<span style="animation-delay:' + i * 0.1 + 's" class="fade-in">' + c + '</span>';
+            }).join('');
+        };
+    </script>
+    
+</body>
+</html>

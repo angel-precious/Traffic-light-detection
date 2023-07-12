@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>交通信号灯检测实现本地部署</title>
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/paragraph.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  <!-- Font Awesome CSS 链接 -->
+    <link rel="stylesheet" type="text/css" href="css/arrow.css">
+    <link rel="stylesheet" type="text/css" href="css/container.css">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
+    <style>
+        h1, h2, p {
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .container {
+            width: 840pt;
+            height: 400pt;
+            margin: auto;
+            overflow: hidden;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2); /* 或者设置一个适合你页面的值 */
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            opacity: 0;
+            padding-top: 25px; /* 或者设置一个适合你页面的值 */
+            transition: opacity 2s, transform 2s;
+        }
+
+        .container h2 {
+            font-size: 30px; /* 或者设置一个适合你页面的值 */
+        }
+
+        .container p {
+            font-size: 20px; /* 或者设置一个适合你页面的值 */
+        }        
+        
+        .container.visible {
+            opacity: 1;
+        }
+        
+        .container div {
+            display: inline-block;
+            width: 45%;
+            margin: 10px;
+            vertical-align: top;
+        }
+        
+        .image, .second-image {
+            position: absolute;
+            top: -10px; /* 或者设置一个适合你页面的值 */
+            left: -10px; /* 或者设置一个适合你页面的值 */
+            width: calc(100% + 20px); /* 或者设置一个适合你页面的值 */
+            height: calc(100% + 20px); /* 或者设置一个适合你页面的值 */
+            object-fit: contain; /* 修改为contain或者其他你想要的属性 */
+            opacity: 0;
+            transition: opacity 4s; /* 修改为你想要的切换时间 */
+        }        
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">交通信号灯检测实现本地部署</h1>
+        <div class="section">
+            <h2>1. 模型训练</h2>
+            <p>使用yolov5m预训练模型进行训练，得到新的模型权重。</p>
+        </div>
+        <div class="section">
+            <h2>2. UI设计</h2>
+            <p>使用Qt5设计出满足项目要求的软件界面，并使用Python脚本将UI文件转成PY文件。</p>
+        </div>
+        <div class="section">
+            <h2>3. detect方法设计</h2>
+            <p>调用yolov5模型，对图片或视频帧进行预测，对模型输出进行分析得到分析结果，返回结果图像和分析结果。</p>
+        </div>
+        <div class="section">
+            <h2>4. 软件实现</h2>
+            <p>使用PyQt5将UI和功能配合起来，通过多线程将检测和页面标签的更新分开来，实现软件对红绿灯的实时检测和更新画面和标签。</p>
+        </div>
+        <img src="pic/qt.png" class="image"> 
+        <img src="pic/qt_final.png" class="second-image">
+    </div>    
+    
+    <span id="nextButton"><i class="fas fa-arrow-right"></i></span>
+
+    <script>
+        document.getElementById('nextButton').onclick = function() {
+            location.href = 'end.html';  // 替换为你的下一个页面的URL
+        };
+
+        var image = document.querySelector('.image');
+        var secondImage = document.querySelector('.second-image');
+        var scrollThreshold = 400; // Change this as needed
+        var scrollAmount = 0;
+
+        window.addEventListener('wheel', function(event) {
+            scrollAmount += event.deltaY;
+            if (scrollAmount < 0) {
+                scrollAmount = 0;
+            }
+            if (scrollAmount > scrollThreshold * 2) {
+                scrollAmount = scrollThreshold * 2;
+            }
+            var opacity = scrollAmount / scrollThreshold;
+            if (opacity <= 1) {
+                image.style.opacity = opacity;
+                secondImage.style.opacity = 0;
+            } else {
+                image.style.opacity = 1;
+                secondImage.style.opacity = opacity - 1;
+            }
+        });
+
+
+        window.onload = function() {
+            var container = document.querySelector('.container');
+            var title = document.getElementById('title');
+            var button = document.getElementById('nextButton');
+            var textElements = document.querySelectorAll('h1, h2, p');
+
+            container.style.transition = 'opacity 2s';
+            container.style.opacity = '1';
+
+            title.style.transition = 'transform 2s';
+            title.style.transform = 'translateY(0)';
+
+            button.style.transition = 'transform 2s';
+            button.style.transform = 'translateY(0)';
+
+            for (var i = 0; i < textElements.length; i++) {
+                setTimeout((function(element) {
+                    return function() {
+                        element.style.opacity = '1';
+                    };
+                })(textElements[i]), i * 200); // Change delay as needed
+            }
+        };
+    </script>
+</body>
+</html>
