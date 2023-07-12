@@ -1,6 +1,6 @@
 ## README - 交通灯检测项目
 
-<center>[中文版](README.md)｜[English Version](README.en.md)</center>
+[中文版](README.md)|[English Version](README.en.md)
 
 ### 项目背景：
 
