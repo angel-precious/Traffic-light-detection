@@ -20,7 +20,8 @@ We aim to develop an assisted driving system that can automatically recognize tr
 ### Project Process:
 
 1. Obtain and annotate datasets
-   ![Data label](pic/first_label.png)
+
+   ![Data label](web/pic/first_label.png)
    We then updated this label to:
 
     - Left turn —— red/green/yellow
@@ -32,12 +33,12 @@ We aim to develop an assisted driving system that can automatically recognize tr
 
     Totaling 16 types of labels
 
-    ![New standard label](pic/direct_label.png)
+    ![New standard label](web/pic/direct_label.png)
 
 3. Train the model using YOLOv8
 
    Final result:
-   ![Effect test](pic/final.png)
+   ![Effect test](web/pic/final.png)
 
 5. Deploy the model locally in the form of a web application and process video streams
 
