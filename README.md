@@ -20,7 +20,8 @@
 ### 项目流程：
 
 1. 获取并标注数据集
-![数据集标签](pic/first_label.png)
+   
+![数据集标签](web/pic/first_label.png)
 随后我们将这种标签更新成为：
 
 - 左转——红灯/绿灯/黄灯
@@ -32,12 +33,12 @@
 
 共计16种标签
 
-![新国标标签](pic/direct_label.png)
+![新国标标签](web/pic/direct_label.png)
 
 3. 使用YOLOv8进行模型训练
 
 最终成果：
-![效果测试](pic/final.png)
+![效果测试](web/pic/final.png)
 
 5. 在本地以Web形式部署模型并处理视频流
 
